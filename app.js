@@ -2,11 +2,14 @@ const express = require("express")
 const path = require("path")
 
 const app = express()
+const router = express.Router()
+
 app.set('view engine', 'html');
 
 var port = process.env.port || 3000
+app.use("/views", router)
 
-app.get("/", (req, res) => {
+router.get("/views", (req, res) => {
     //res.send("homepage by Emi")
     res.sendFile(path.join(__dirname + "/views/index.html"))
 })
